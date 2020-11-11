@@ -1,0 +1,43 @@
+//Square
+$square-size: 150px;
+$squares: 15;
+$radius: 10;
+//Animations
+$animation-duration: 5s;
+//Colors
+$true-blue: #4465b6ff;
+$mint-cream: #e6efeeff;
+$green-cyan: #019d6bff;
+$light-pink: #f6a6abff;
+$true-blue-2: #4465b6ff;
+
+#container {
+  background-color: $mint-cream;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sqr {
+  width: $square-size;
+  height: $square-size;
+  border: solid $green-cyan 2px;
+  position: absolute;
+}
+
+@for $squaresIndex from 1 through $squares {
+  #container div:nth-child(#{$squaresIndex}) {
+    animation-name: squareToCircle#{$squaresIndex};
+    animation-duration: $animation-duration;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-delay: (0.3s * $squaresIndex);
+  }
+  @keyframes squareToCircle#{$squaresIndex} {
+    50% {
+      border-radius: 50%;
+      transform: rotate(90deg * 1);
+    }
+  }
+}
