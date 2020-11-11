@@ -1,15 +1,14 @@
 //Square
 $square-size: 150px;
-$squares: 15;
+$squares: 12;
 $radius: 10;
 //Animations
-$animation-duration: 5s;
+$animation-duration: 10s;
 //Colors
 $true-blue: #4465b6ff;
 $mint-cream: #e6efeeff;
-$green-cyan: #019d6bff;
+$lavender-blue: #c0b9ddff;
 $light-pink: #f6a6abff;
-$true-blue-2: #4465b6ff;
 
 #container {
   background-color: $mint-cream;
@@ -22,22 +21,32 @@ $true-blue-2: #4465b6ff;
 .sqr {
   width: $square-size;
   height: $square-size;
-  border: solid $green-cyan 2px;
   position: absolute;
+  border: solid $true-blue 2px;
 }
 
 @for $squaresIndex from 1 through $squares {
+  $angle: 180deg + $squaresIndex * 10deg;
   #container div:nth-child(#{$squaresIndex}) {
-    animation-name: squareToCircle#{$squaresIndex};
-    animation-duration: $animation-duration;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-delay: (0.3s * $squaresIndex);
+    animation: squareToCircle#{$squaresIndex}
+      $animation-duration
+      infinite
+      (0.5s * $squaresIndex);
   }
   @keyframes squareToCircle#{$squaresIndex} {
+    0% {
+      border: solid $lavender-blue 2px;
+    }
     50% {
-      border-radius: 50%;
-      transform: rotate(90deg * 1);
+      transform: rotate($angle);
+      border: solid $light-pink 2px;
+      border-radius: 100%;
+      height: $square-size/2;
+      width: $square-size;
+    }
+    100% {
+      transform: rotate(180deg);
+      border: solid $true-blue 2px;
     }
   }
 }

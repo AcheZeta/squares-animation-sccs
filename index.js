@@ -1,7 +1,7 @@
 // Import stylesheets
 import "./style.scss";
 
-let squaresNumber = 15;
+let squaresNumber = 12;
 
 const printSquares = () => {
   const container = document.getElementById("container");
