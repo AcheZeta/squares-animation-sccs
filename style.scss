@@ -1,17 +1,17 @@
 //Square
 $square-size: 150px;
-$squares: 12;
+$squares: 20;
 $radius: 10;
 //Animations
 $animation-duration: 10s;
 //Colors
-$true-blue: #4465b6ff;
-$mint-cream: #e6efeeff;
 $lavender-blue: #c0b9ddff;
-$light-pink: #f6a6abff;
+$little-boy-blue: #80a1d4ff;
+$medium-turquoise: #75c9c8ff;
+$gainsboro: #ded9e2ff;
 
 #container {
-  background-color: $mint-cream;
+  background-color: $gainsboro;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -22,7 +22,7 @@ $light-pink: #f6a6abff;
   width: $square-size;
   height: $square-size;
   position: absolute;
-  border: solid $true-blue 2px;
+  border: solid $lavender-blue 2px;
 }
 
 @for $squaresIndex from 1 through $squares {
@@ -31,7 +31,7 @@ $light-pink: #f6a6abff;
     animation: squareToCircle#{$squaresIndex}
       $animation-duration
       infinite
-      (0.5s * $squaresIndex);
+      (0.1s * $squaresIndex);
   }
   @keyframes squareToCircle#{$squaresIndex} {
     0% {
@@ -39,14 +39,14 @@ $light-pink: #f6a6abff;
     }
     50% {
       transform: rotate($angle);
-      border: solid $light-pink 2px;
+      border: solid $medium-turquoise 2px;
       border-radius: 100%;
       height: $square-size/2;
       width: $square-size;
     }
     100% {
       transform: rotate(180deg);
-      border: solid $true-blue 2px;
+      border: solid $little-boy-blue 2px;
     }
   }
 }
